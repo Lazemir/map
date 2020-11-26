@@ -84,7 +84,7 @@ private:
             branch->left = branch->right = nullptr;
             branch->parent = parent;
             
-            res = std::make_pair(iterator(branch), true);
+            res = std::make_pair(this->get_iterator(branch), true);
         }
         
         else if(element.first < branch->data.first) {
@@ -109,7 +109,7 @@ private:
                 }
             }
         } else {
-            res = std::make_pair(iterator(branch), false);
+            res = std::make_pair(this->get_iterator(branch), false);
         }
 
         branch->height = max(height(branch->left), height(branch->right)) + 1;
@@ -208,7 +208,7 @@ private:
         } else if(key > branch->data.first) {
             return find(key, branch->right);
         } else {
-            return iterator(branch);
+            return this->get_iterator(branch);
         }
     }
 
@@ -240,9 +240,9 @@ public:
     
     size_t size() {return _size;}
 
-    iterator begin() {return iterator(findMin(root));}
+    iterator begin() {return this->get_iterator(findMin(root));}
     
-    iterator end() {return nullptr;}
+    iterator end() {return this->get_iterator(nullptr);}
     
     void clear() {
         del(root);

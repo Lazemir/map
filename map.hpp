@@ -31,14 +31,15 @@ protected:
     
 public:
     class iterator {
+        friend class map;
     private:
         node* current;
-        
-    public:
+
         iterator(node* branch) {
             current = branch;
         }
         
+    public:
         iterator() : current(nullptr) {};
         
         iterator operator++() {
@@ -79,7 +80,13 @@ public:
         
         std::pair<const keyT, valT>* operator->() {return &current->data;}
     };
+
+protected:
+    iterator get_iterator(node* branch) {
+        return iterator(branch);
+    }
     
+public:
     virtual pair<iterator, bool> insert(pair<keyT, valT> element) = 0;
     
     virtual valT& operator[](keyT key) = 0;
