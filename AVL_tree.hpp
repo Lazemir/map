@@ -85,9 +85,7 @@ private:
             branch->parent = parent;
             
             res = std::make_pair(this->get_iterator(branch), true);
-        }
-        
-        else if(element.first < branch->data.first) {
+        } else if(element.first < branch->data.first) {
             res = insert(element, branch->left, branch);
             
             if(height(branch->left) - height(branch->right) == 2) {
@@ -225,7 +223,7 @@ public:
         if (p.second) {
             ++_size;
         }
-        return insert(element, root);
+        return p;
     }
     
     valT& operator[](keyT key) {return insert(std::make_pair(key, valT())).first->second;}
