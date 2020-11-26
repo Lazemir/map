@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "from Pacanckii\map.h"
-#include "from Pacanckii\AVL_tree.h"
+#include "map.hpp"
+#include "AVL_tree.hpp"
 typedef map_AVL<int, std::string> binTree_t;
 // typedef std::map<int, std::string> binTree_t;
 
